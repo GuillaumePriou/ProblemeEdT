@@ -1,4 +1,4 @@
-#include "Session.h"
+#include "../include/Session.h"
 
                                                     // A  B  C  D  E  F  G  H  I  J  K
 short incompatiblites[NB_SESSIONS][NB_SESSIONS] = {   {0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0 }, // A
@@ -13,6 +13,16 @@ short incompatiblites[NB_SESSIONS][NB_SESSIONS] = {   {0, 1, 1, 0, 1, 0, 1, 1, 0
                                                       {1, 0, 0, 1, 2, 1, 0, 0, 1, 0, 0 }, // J
                                                       {0, 1, 0, 2, 1, 2, 0, 1, 0, 0, 0 }  // K
                                                     };
+                                                    /*
+                                                    // A  B  C  D
+short incompatiblites[NB_SESSIONS][NB_SESSIONS] = {   {0, 0, 0, 0 }, // A
+                                                      {0, 0, 0, 0 }, // B
+                                                      {0, 0, 0, 0 }, // C
+                                                      {0, 0, 0, 0 }  // D
+
+                                                    };*/
+
+
 Session::Session()
 {
     m_valeur = vide;

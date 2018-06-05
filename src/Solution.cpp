@@ -28,6 +28,16 @@ void Solution::initOrdrePlacement (Session listeSessions[NB_SESSIONS],  short or
 
 bool Solution::tenterPlacement (short sessionAPlacer, Session EdtACompleter[NB_CRENEAUX][NB_SALLES])
 {
+    // Verifions qu'on n'a pas encore tout place
+    short nbCasesVides = 0 ;
+    for (short i=0; i<NB_CRENEAUX; i++)
+        for (short j=0; j<NB_SALLES; j++)
+            if (EdtACompleter[i][j].m_valeur == vide)
+                nbCasesVides++;
+
+    if (nbCasesVides == 1)
+        return true;
+
     bool succes = false;
     short positionTestee=0;
     std::vector<std::pair<short, short> > PositionPossibles(0);
@@ -36,18 +46,23 @@ bool Solution::tenterPlacement (short sessionAPlacer, Session EdtACompleter[NB_C
     inventorierPositionsPossibles (EdtACompleter,
                                    m_listeSessions[m_ordrePlacement[sessionAPlacer]],
                                    PositionPossibles
-                                   );
-    if (sessionAPlacer == 6)
+                                 );
+    /*  if (sessionAPlacer == 6)
         cout << "hello" << endl;
 
+
+    for (short i=0; i<PositionPossibles.size(); i++)
+        cout << "PositionPossibles[" << i << "] = " << PositionPossibles[i].first << ", " <<PositionPossibles[i].second << endl;
+*/
     while (succes == false && positionTestee < PositionPossibles.size())
     {
+
         // Creation d'un nouvel emploi du temps experimental
-      for (short i=0; i<NB_CRENEAUX; i++)
+        for (short i=0; i<NB_CRENEAUX; i++)
             for (short j=0; j<NB_SALLES; j++)
                 nouvelEdT [i][j] = EdtACompleter[i][j];
 
-        cout << endl << "avant :" << endl;
+        /*cout << endl << "avant :" << endl;
         for (short i=0; i<NB_CRENEAUX; i++)
         {
             for (short j=0; j<NB_SALLES; j++)
@@ -55,18 +70,21 @@ bool Solution::tenterPlacement (short sessionAPlacer, Session EdtACompleter[NB_C
 
             cout << endl;
         }
-        nouvelEdT [PositionPossibles[positionTestee].first][PositionPossibles[positionTestee].second] = m_listeSessions[m_ordrePlacement[sessionAPlacer]];
-        cout << "apres :" << endl;
+
+        cout << "sessionAPlacer = " << sessionAPlacer << endl;
+        cout << "m_ordrePlacement[sessionAPlacer] = " << m_ordrePlacement[sessionAPlacer] << endl ;
+        cout << "m_listeSessions[m_ordrePlacement[sessionAPlacer]] = " << m_listeSessions[m_ordrePlacement[sessionAPlacer]].m_valeur << endl ;
+        */nouvelEdT [PositionPossibles[positionTestee].first][PositionPossibles[positionTestee].second] = m_listeSessions[m_ordrePlacement[sessionAPlacer]];
+        /*cout << "tentons :" << endl;
         for (short i=0; i<NB_CRENEAUX; i++)
         {
             for (short j=0; j<NB_SALLES; j++)
                 cout << nouvelEdT[i][j].m_valeur << " ";
 
             cout << endl;
-        }
+        }*/
         // Passe la proposition d'emploi du temps a la session suivante pour essayer de se placer
         succes = tenterPlacement(sessionAPlacer+1, nouvelEdT);
-
 
         // Passage a la position suivante
         positionTestee++;
@@ -77,6 +95,7 @@ bool Solution::tenterPlacement (short sessionAPlacer, Session EdtACompleter[NB_C
             for (short j=0; j<NB_CRENEAUX; j++)
                 EdtACompleter[i][j] = nouvelEdT[i][j];
 
+   // cout << "CECI EST UN FUCKING RETURN !!!" ;
     return succes;
 }
 

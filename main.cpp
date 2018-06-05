@@ -1,7 +1,6 @@
 #include <iostream>
 
-#include "Solution.h"
-
+#include "./include/Solution.h"
 using namespace std;
 
 int main()
@@ -21,6 +20,7 @@ int main()
         solution.m_listeSessions[lettre]=s;
         //s.print();
         solution.m_listeSessions[lettre].print();
+
     }
 
     // Creation de l'ordre dans lequel on va placer les sessions
@@ -28,15 +28,16 @@ int main()
 
 
         solution.m_listeSessions[0].print();
-
+/*
     for (short lettre=0; lettre<NB_SESSIONS; lettre++)
     {
         cout << "Ordre " << lettre << " " << solution.m_ordrePlacement[lettre] << endl;
-    }
+    }*/
 
     // Mise au point d'un emploi du temps
     solution.tenterPlacement(A, solution.m_EdT);
 
+    cout << "RESULTATS ::::" << endl ;
     for (short i=0; i<NB_CRENEAUX; i++)
     {
         for (short j=0; j<NB_SALLES; j++)
@@ -45,6 +46,5 @@ int main()
         cout << endl;
     }
 
-
-    return 0;
+     return 0;
 }

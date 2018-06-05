@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#define NB_SESSIONS 11
-#define NB_CRENEAUX  4
-#define NB_SALLES    3
+#define NB_SESSIONS  11//4 //11
+#define NB_CRENEAUX   4//2 //4
+#define NB_SALLES     3//2 //3
 
 
 #define A 0
