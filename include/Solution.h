@@ -65,7 +65,7 @@ class Solution
             Emploi du temps
             Contient les sessions.
         */
-        Session m_EdT[NB_CRENEAUX][NB_SALLES] = {vide};
+        Session m_EdT[NB_CRENEAUX][NB_SALLES] ;
 
     protected:
 

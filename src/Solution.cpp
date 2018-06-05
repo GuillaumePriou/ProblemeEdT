@@ -2,7 +2,17 @@
 
 Solution::Solution()
 {
-    //ctor
+    for (short i=0; i<NB_CRENEAUX; i++)
+        for (short j=0; j<NB_SALLES; j++)
+        {
+            m_EdT[i][j].m_creneauMax = 0;
+            m_EdT[i][j].m_creneauMin = 0;
+            m_EdT[i][j].m_niveauConflit = 0;
+            m_EdT[i][j].m_valeur = vide;
+
+            for (short k=0; k<NB_SESSIONS; k++)
+                m_EdT[i][j].m_incompatibles[k] = 0;
+        }
 }
 
 Solution::~Solution()
