@@ -141,6 +141,32 @@ bool Solution::existeConflits (Session edt[NB_CRENEAUX][NB_SALLES], short crenea
     return false;
 }
 
+void Solution::printEdT(Session edt[NB_CRENEAUX][NB_SALLES])
+{
+    char correspondanceIndeVersLettre [NB_SESSIONS+1]={'A','B','C','D','E','F','G','H','I','J','K','_'};
+    string descriptifHoraire[NB_CRENEAUX] = {   "Jour 1 - matin      ",
+                                                "       - apres-midi ",
+                                                "Jour 2 - matin      ",
+                                                "       - apres-midi ",
+
+                            };
+
+    cout << "RESULTATS :" << endl ;
+    cout << "                    Salles" << endl;
+    cout << "                    1 2 3" << endl;
+    for (short i=0; i<NB_CRENEAUX; i++)
+    {
+        cout << descriptifHoraire[i] ;
+        for (short j=0; j<NB_SALLES; j++)
+            if (edt[i][j].m_valeur != vide)
+                cout << correspondanceIndeVersLettre[edt[i][j].m_valeur] << " ";
+            else
+                cout << "-" ;
+
+        cout << endl;
+    }
+}
+
 bool fonctionComparaison (Session a, Session b)
 {
     return (a.m_niveauConflit > b.m_niveauConflit);

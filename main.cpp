@@ -46,5 +46,7 @@ int main()
         cout << endl;
     }
 
+    solution.printEdT(solution.m_EdT);
+
      return 0;
 }
