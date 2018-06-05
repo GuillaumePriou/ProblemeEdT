@@ -25,10 +25,12 @@ Session::Session()
 }
 
 
-Session::Session(Lettres val)
+Session::Session(short val)
 {
     m_valeur=val;
     m_niveauConflit = 0;
+    m_creneauMax = 0;
+    m_creneauMin = 0;
 
     for (short i=0; i<NB_SESSIONS; i++)
     {
@@ -38,11 +40,11 @@ Session::Session(Lettres val)
             m_niveauConflit++;
 
         // Compte les sessions qui ont besoin de moi
-        if (incompatiblites[m_valeur][i] == 2)
+        if (incompatiblites[i][m_valeur] == 2)
             m_creneauMax=1;
 
         // Compte les sessions dont j'ai besoin
-        if (incompatiblites[i][m_valeur] == 2)
+        if (incompatiblites[m_valeur][i] == 2)
             m_creneauMin=1;
     }
 
@@ -52,4 +54,20 @@ Session::Session(Lettres val)
 Session::~Session()
 {
     //dtor
+}
+
+void Session::print()
+{
+    std::cout << "Session " << m_valeur << " :" << std::endl;
+
+    std::cout << "\tCreneau min : " << m_creneauMin << std::endl;
+    std::cout << "\tCreneau max : " << m_creneauMax << std::endl;
+    std::cout << "\tNiveau de conflit : " << m_niveauConflit << std::endl;
+
+    std::cout << "incompatibilites : " ;
+
+    for (short i=0; i<NB_SESSIONS; i++)
+        std::cout << m_incompatibles[i] << " " ;
+
+    std::cout << std::endl;
 }

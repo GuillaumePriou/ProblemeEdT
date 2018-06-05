@@ -1,32 +1,36 @@
 #ifndef SESSION_H
 #define SESSION_H
 
+#include <iostream>
+
 #define NB_SESSIONS 11
 #define NB_CRENEAUX  4
 #define NB_SALLES    3
 
-typedef enum
-{
-    A=0,
-    B=1,
-    C=2,
-    D=3,
-    E=4,
-    F=5,
-    G=6,
-    H=7,
-    I=8,
-    J=9,
-    K=10,
-    vide=100
-} Lettres;
+
+#define A 0
+#define B 1
+#define C 2
+#define D 3
+#define E 4
+#define F 5
+#define G 6
+#define H 7
+#define I 8
+#define J 9
+#define K 10
+#define vide 100
+
+using namespace std;
 
 class Session
 {
     public:
         Session();
-        Session(Lettres val);
+        Session(short val);
         virtual ~Session();
+
+        void print();
 
     /*************
         Attributs
@@ -35,7 +39,7 @@ class Session
     /*
         A, B, C, ...
     */
-    Lettres m_valeur;
+    short m_valeur;
 
     /*
         aka nombre de niveaux de sessions dependant de cette session

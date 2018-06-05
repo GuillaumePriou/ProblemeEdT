@@ -3,10 +3,10 @@
 
 #include "Session.h"
 #include <vector>
-#include <map>
+#include <utility>
 #include <algorithm>
 
-bool fonctionComparaison (Session A, Session B);
+bool fonctionComparaison (Session a, Session b);
 
 class Solution
 {
@@ -32,13 +32,21 @@ class Solution
                 OUTPUT : EdtACompleter
             FALSE : le placement a echoue, la session placee juste avant doit trouver une autre place.
         */
-        bool tenterPlacement (Session &sessionAPlacer, Session EdtACompleter[NB_CRENEAUX][NB_SALLES]);
+        bool tenterPlacement (short sessionAPlacer, Session EdtACompleter[NB_CRENEAUX][NB_SALLES]);
 
         /*
             Pour un emploi du temps EdT partiellement rempli et une session donnes, liste tous les emplacements dans
             l'emploi du temps ou la session peut etre placee en tenant compte des contraintes de celle-ci.
         */
-        void inventorierPositionsPossibles (Session Edt[NB_CRENEAUX][NB_SALLES], Session sessionAPlacer, std::vector<std::map<short, short> >& listPositionsPossibles);
+        void inventorierPositionsPossibles (Session edt[NB_CRENEAUX][NB_SALLES], Session sessionAPlacer, std::vector<std::pair<short, short> >& listPositionsPossibles);
+
+        /*
+            cherche des conflits pour une session dans un EdT donne
+            Return value :
+            TRUE si aucun conflit detecte
+            FALSE si un conflit est detecte
+        */
+        bool existeConflits (Session edt[NB_CRENEAUX][NB_SALLES], short creneauSession, short salleSession, Session sessionAPlacer);
 
     /*************
         Attributs
@@ -57,7 +65,7 @@ class Solution
             Emploi du temps
             Contient les sessions.
         */
-        Session m_EdT[NB_CRENEAUX][NB_SALLES];
+        Session m_EdT[NB_CRENEAUX][NB_SALLES] = {vide};
 
     protected:
 
