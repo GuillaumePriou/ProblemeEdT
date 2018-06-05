@@ -75,14 +75,14 @@ bool Solution::tenterPlacement (short sessionAPlacer, Session EdtACompleter[NB_C
         cout << "m_ordrePlacement[sessionAPlacer] = " << m_ordrePlacement[sessionAPlacer] << endl ;
         cout << "m_listeSessions[m_ordrePlacement[sessionAPlacer]] = " << m_listeSessions[m_ordrePlacement[sessionAPlacer]].m_valeur << endl ;
         */nouvelEdT [PositionPossibles[positionTestee].first][PositionPossibles[positionTestee].second] = m_listeSessions[m_ordrePlacement[sessionAPlacer]];
-        /*cout << "tentons :" << endl;
+        cout << "tentons :" << endl;
         for (short i=0; i<NB_CRENEAUX; i++)
         {
             for (short j=0; j<NB_SALLES; j++)
                 cout << nouvelEdT[i][j].m_valeur << " ";
 
             cout << endl;
-        }*/
+        }
         // Passe la proposition d'emploi du temps a la session suivante pour essayer de se placer
         succes = tenterPlacement(sessionAPlacer+1, nouvelEdT);
 
