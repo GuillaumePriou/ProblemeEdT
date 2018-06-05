@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+*.layout
+*.depend
+
 # Compiled Object files
 *.slo
 *.lo
