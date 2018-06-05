@@ -7,31 +7,26 @@
 
 typedef enum
 {
-    vide,
-    A,
-    B,
-    C,
-    D,
-    E,
-    F,
-    G,
-    H,
-    I,
-    J,
-    K
+    A=0,
+    B=1,
+    C=2,
+    D=3,
+    E=4,
+    F=5,
+    G=6,
+    H=7,
+    I=8,
+    J=9,
+    K=10,
+    vide=100
 } Lettres;
 
 class Session
 {
     public:
         Session();
+        Session(Lettres val);
         virtual ~Session();
-
-
-    /*************
-        Methodes
-    *************/
-
 
     /*************
         Attributs
@@ -62,10 +57,11 @@ class Session
 
     /*
         Contient les incompatibilites de la session avec d'autres sessions
-        1 = incompatibble
+        2 = doit se derouler avant l'autre session
+        1 = incompatible
         0 = compatible
     */
-    bool m_incompatibles [NB_SESSIONS];
+    short m_incompatibles [NB_SESSIONS];
 
     /*
         Calcule a partir des incompatibilites & des precedences
