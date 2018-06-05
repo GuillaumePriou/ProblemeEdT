@@ -4,6 +4,9 @@
 #include "Session.h"
 #include <vector>
 #include <map>
+#include <algorithm>
+
+bool fonctionComparaison (Session A, Session B);
 
 class Solution
 {
