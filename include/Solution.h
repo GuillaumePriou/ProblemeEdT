@@ -5,22 +5,6 @@
 #include <vector>
 #include <map>
 
-typedef enum
-{
-    vide,
-    A,
-    B,
-    C,
-    D,
-    E,
-    F,
-    G,
-    H,
-    I,
-    J,
-    K
-} Lettres;
-
 class Solution
 {
     public:
