@@ -1,10 +1,13 @@
 #include <iostream>
-
+#include <ctime>
+#include <iomanip>
 #include "./include/Solution.h"
 using namespace std;
 
 int main()
 {
+    time_t debut, fin;
+
     // Creation de solution
     Solution solution;
 /*
@@ -12,6 +15,7 @@ int main()
         for (short j=0; j<NB_SALLES; j++)
             cout << solution.m_EdT[i][j].m_valeur;
 */
+    time(&debut);
 
     // Creation de la liste de session avec leurs specificites
     for (short lettre=0; lettre<NB_SESSIONS; lettre++)
@@ -37,6 +41,11 @@ int main()
     // Mise au point d'un emploi du temps
     solution.tenterPlacement(A, solution.m_EdT);
 
+    time(&fin);
+    double difference = difftime (fin, debut);
+
+    cout << "Duree de recherche : " << setprecision (15) << difference <<  "secondes." << endl;
+
     cout << "RESULTATS ::::" << endl ;
     for (short i=0; i<NB_CRENEAUX; i++)
     {
@@ -45,6 +54,8 @@ int main()
 
         cout << endl;
     }
+
+    solution.printEdT(solution.m_EdT);
 
      return 0;
 }

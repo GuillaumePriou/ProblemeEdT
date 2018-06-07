@@ -2,6 +2,7 @@
 #define SOLUTION_H
 
 #include "Session.h"
+#include <string>
 #include <vector>
 #include <utility>
 #include <algorithm>
@@ -48,6 +49,10 @@ class Solution
         */
         bool existeConflits (Session edt[NB_CRENEAUX][NB_SALLES], short creneauSession, short salleSession, Session sessionAPlacer);
 
+        /*
+            Affiche l'emploi du temps avec les lettres
+        */
+        void printEdT(Session edt[NB_CRENEAUX][NB_SALLES]);
     /*************
         Attributs
     *************/
@@ -65,7 +70,7 @@ class Solution
             Emploi du temps
             Contient les sessions.
         */
-        Session m_EdT[NB_CRENEAUX][NB_SALLES] = {vide};
+        Session m_EdT[NB_CRENEAUX][NB_SALLES] ;
 
     protected:
 
